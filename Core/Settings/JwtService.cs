@@ -32,7 +32,7 @@ namespace LOH_UserManagement.Core.Settings
             {
                 { "iss", jWTData.Issuer },
                 { "aud", jWTData.Audience },
-                { "exp", new DateTimeOffset(DateTime.UtcNow.AddMinutes(jWTData.ExpirationMinutes)).ToUnixTimeSeconds() },
+                { "exp", DateTime.Now + jWTData.TokenLifeTime},
                 { "iat", new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() },
                 { "nbf", new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() },
                 { "claims", claims }
