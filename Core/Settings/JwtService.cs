@@ -2,18 +2,16 @@
 
 using LOH_UserManagement.Entities;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace LOH_UserManagement.Core.Settings
 {
     public static class JwtService
     //: IJwtService
     {
-        public static string GenerateToken(LOHUser user, List<string> userRoles,
-           IOptions<JwtData> options)
+        public static string GenerateToken(LOHUser user, IOptions<JwtData> options)
         {
             var jWTData = options.Value;
             var claims = new List<Claim>
@@ -24,11 +22,8 @@ namespace LOH_UserManagement.Core.Settings
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 };
 
-            foreach (var role in userRoles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
-            }
-
+            
+            
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jWTData.SecretKey));
 
 
