@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Security.Claims;
-using System.Text;
 using JWT;
 using JWT.Algorithms;
 using JWT.Serializers;
@@ -21,7 +19,7 @@ namespace LOH_UserManagement.Core.Settings
                 { ClaimTypes.NameIdentifier, user.Id.ToString() },
                 { ClaimTypes.Email, user.Email },
                 { ClaimTypes.Name, user.UserName },
-                { "Fullname", user.Fullname },
+                { "Fullname", user.FullName },
                 { "IsAdmin", user.IsAdmin },
                 { "IsBuyer", user.IsBuyer },
                 { "IsSeller", user.IsSeller },

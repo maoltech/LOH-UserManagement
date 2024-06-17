@@ -3,7 +3,12 @@ using Microsoft.OpenApi.Models;
 using System;
 using LOH_UserManagement.Context;
 using LOH_UserManagement.Core.Helper;
+using LOH_UserManagement.Core.Settings;
+using LOH_UserManagement.Core.Profiles;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 var builder = WebApplication.CreateBuilder(args);
 
